@@ -1,8 +1,7 @@
 import { z } from "zod";
 import knex from "#postgres/knex.js";
-import env from "#config/env/env.js";
 
-const responseSchema = z.object({
+export const responseSchema = z.object({
     response: z.object({
         data: z.object({
             dtNextBox: z.string(),
@@ -92,11 +91,11 @@ export async function saveResponse(date?: string) {
 
         console.log(`created new record (${data.requestDate})`);
     }
-};
+}
 
 export async function logDataDB(tables: string[]) {
     let rowsArray = [];
-    for (const table of tables) { 
+    for (const table of tables) {
         const rows = await knex.select("*").from(table);
         rowsArray.push(rows);
     }
