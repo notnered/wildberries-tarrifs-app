@@ -124,4 +124,4 @@ setInterval(async () => {
     } catch (err) {
         console.error("error updating sheets:", err);
     }
-}, 60 * 1000); // 1 hour
+}, 60 * 60 * 1000); // 1 hour
