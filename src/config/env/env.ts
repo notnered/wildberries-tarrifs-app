@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 import { z } from "zod";
+
 dotenv.config();
 
 const envSchema = z.object({
@@ -20,6 +21,8 @@ const envSchema = z.object({
             .transform((value) => parseInt(value)),
     ]),
     API_KEY: z.union([z.string(), z.undefined()]),
+    SHEET_ID: z.union([z.string(), z.undefined()]),
+    GOOGLE_KEYFILE: z.union([z.string(), z.undefined()]),
 });
 
 const env = envSchema.parse({
@@ -31,6 +34,8 @@ const env = envSchema.parse({
     NODE_ENV: process.env.NODE_ENV,
     APP_PORT: process.env.APP_PORT,
     API_KEY: process.env.API_KEY,
+    SHEET_ID: process.env.SHEET_ID,
+    GOOGLE_KEYFILE: process.env.GOOGLE_KEYFILE,
 });
 
 export default env;
